@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo exclusivo de perfumes y fragancias para hombres y mujeres. Encuentra tu aroma ideal.">
+    <meta name="author" content="Su Nombre">
+    <title>Aroma & Esencia - Catálogo de Perfumes</title>
+    <style>
+        /* ==========================================
+           1. VARIABLES GLOBALES Y PALETA ELEGANTE
+           ========================================== */
+        :root {
+          --primary-color: #d4af37;       /* Dorado elegante */
+          --primary-hover: #b8962e;       /* Dorado más oscuro para interacciones */
+          --accent-color: #e0a96d;        /* Cobre cálido / Rosa dorado */
+          --secondary-color: #2b1b36;     /* Violeta nocturno muy elegante */
+          --bg-color: #faf7f5;            /* Blanco crema suave de fondo */
+          --surface-color: #ffffff;       /* Fondo de las tarjetas/secciones */
+          --text-color: #4a3e4e;          /* Texto principal ciruela oscuro */
+          --border-color: #f0e6df;        /* Bordes suaves tono crema */
+          --radius: 12px;                 /* Bordes sutilmente redondeados */
+          --shadow: 0 10px 25px -5px rgba(43, 27, 54, 0.08), 0 8px 10px -6px rgba(43, 27, 54, 0.04);
+        }
+
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+          line-height: 1.7;
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+        }
+
+        /* ==========================================
+           2. ENCABEZADO Y NAVEGACIÓN (HEADER & NAV)
+           ========================================== */
+        header {
+          background: linear-gradient(135deg, #2b1b36 0%, #4a2c5a 100%);
+          color: #ffffff;
+          padding: 1.2rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+          font-size: 1.6rem;
+          color: #f7e7ce;
+          font-weight: 700;
+          letter-spacing: 1px;
+        }
+
+        nav ul {
+          display: flex;
+          list-style: none;
+          gap: 1.8rem;
+        }
+
+        nav a {
+          text-decoration: none;
+          color: #e2d9eb;
+          font-weight: 500;
+          transition: color 0.3s ease;
+          position: relative;
+        }
+
+        nav a:hover {
+          color: var(--primary-color);
+        }
+
+        nav a::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -4px;
+          left: 0;
+          background-color: var(--primary-color);
+          transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+          width: 100%;
+        }
+
+        /* ==========================================
+           3. CONTENIDO PRINCIPAL Y SECCIONES
+           ========================================== */
+        main {
+          max-width: 950px;
+          width: 100%;
+          margin: 2.5rem auto;
+          padding: 0 1.2rem;
+          flex: 1;
+        }
+
+        section {
+          background-color: var(--surface-color);
+          padding: 2.5rem;
+          margin-bottom: 2.5rem;
+          border-radius: var(--radius);
+          box-shadow: var(--shadow);
+          border-top: 4px solid var(--primary-color);
+        }
+
+        section h2 {
+          color: var(--secondary-color);
+          font-size: 1.5rem;
+          margin-bottom: 1.2rem;
+          border-bottom: 1px solid var(--border-color);
+          padding-bottom: 0.6rem;
+        }
+
+        section p {
+          margin-bottom: 1.2rem;
+        }
+
+        section img {
+          max-width: 100%;
+          height: auto;
+          border-radius: var(--radius);
+          display: block;
+          margin: 1.5rem 0;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        section ul {
+          padding-left: 1.5rem;
+          margin-bottom: 1rem;
+        }
+
+        section li {
+          margin-bottom: 0.8rem;
+        }
+
+        section li strong {
+          color: var(--secondary-color);
+        }
+
+        /* ==========================================
+           4. TABLA DE CATÁLOGO
+           ========================================== */
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 1.5rem;
+          overflow: hidden;
+          border-radius: var(--radius);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        th, td {
+          padding: 1rem;
+          text-align: left;
+          border: 1px solid var(--border-color);
+        }
+
+        th {
+          background-color: var(--secondary-color);
+          color: #f7e7ce;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+        }
+
+        tbody tr {
+          transition: background-color 0.2s ease;
+        }
+
+        tbody tr:nth-child(even) {
+          background-color: #fdfaf7;
+        }
+
+        tbody tr:hover {
+          background-color: #f7eee6;
+        }
+
+        /* ==========================================
+           5. FORMULARIO DE CONTACTO
+           ========================================== */
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.2rem;
+          max-width: 550px;
+        }
+
+        label {
+          font-weight: 600;
+          color: var(--secondary-color);
+          margin-bottom: -0.6rem;
+          font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+          width: 100%;
+          padding: 0.85rem;
+          border: 1.5px solid var(--border-color);
+          border-radius: var(--radius);
+          font-size: 1rem;
+          background-color: #fdfdfd;
+          color: var(--text-color);
+          outline: none;
+          transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+          background-color: #ffffff;
+        }
+
+        button[type="submit"] {
+          background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+          color: #ffffff;
+          border: none;
+          padding: 0.9rem 1.5rem;
+          font-size: 1rem;
+          font-weight: 600;
+          border-radius: var(--radius);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+          margin-top: 0.5rem;
+        }
+
+        button[type="submit"]:hover {
+          background: linear-gradient(135deg, #b8962e 100%, #9a7d24 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* ==========================================
+           6. PIE DE PÁGINA
+           ========================================== */
+        footer {
+          background-color: var(--secondary-color);
+          color: #e2d9eb;
+          text-align: center;
+          padding: 1.5rem;
+          font-size: 0.9rem;
+          border-top: 1px solid rgba(212, 175, 55, 0.2);
+          margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Aroma & Esencia</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><button style="background:none;border:none;color:inherit;font:inherit;cursor:pointer;" onclick="location.href='#contacto'">Contacto</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <!-- SECCIÓN INICIO -->
+        <section id="inicio">
+            <h2>Bienvenido a Nuestra Perfumería</h2>
+            <p>Descubre fragancias exclusivas diseñadas para evocar emociones, elegancia y dejar una huella inolvidable. Explora nuestra selección de aromas únicos para cada ocasión.</p>
+            <ul>
+                <li><strong>Alta Duración:</strong> Esencias concentradas que perduran todo el día.</li>
+                <li><strong>Ingredientes Premium:</strong> Notas florales, amaderadas y orientales seleccionadas cuidadosamente.</li>
+            </ul>
+        </section>
+
+        <!-- SECCIÓN CATÁLOGO -->
+        <section id="catalogo">
+            <h2>Catálogo de Fragancias</h2>
+            <p>Conoce algunos de nuestros perfumes más populares y sus familias olfativas:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Perfume</th>
+                        <th>Tipo</th>
+                        <th>Notas Principales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Noche de Oro</strong></td>
+                        <td>Unisex / Nocturna</td>
+                        <td>Ámbar, vainilla y maderas preciosas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brisa Floral</strong></td>
+                        <td>Femenina / Diurna</td>
+                        <td>Jazmín, azahar y almizcle blanco</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vértice Intenso</strong></td>
+                        <td>Masculina</td>
+                        <td>Cuero, pimienta negra y cedro</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECCIÓN CONTACTO -->
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+            <p>¿Tienes dudas sobre alguna fragancia o necesitas asesoría personalizada? Escríbenos:</p>
+            <form action="#" method="POST">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
+
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>&copy; 2026 Aroma & Esencia. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
